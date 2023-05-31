@@ -33,6 +33,32 @@ Update GraphQL schemas using:
 go run github.com/99designs/gqlgen generate
 ```
 
+## Queries and Mutations
+Samples of queries and mutations to teste on the API
+
+```graphql
+mutation createCategory {
+  createCategory(input: {name: "Tecnologia", description: "Cursos de Tecnologia"}){
+    id
+    name
+    description
+  }
+}
+
+query queryCategories {
+  categories {
+    id
+    name
+    description
+    courses {
+      id
+      name
+      description
+    }
+  }
+}
+```
+
 ## Common issues
 A list of common issues of day by day development.
 
