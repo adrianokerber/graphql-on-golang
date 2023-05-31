@@ -18,8 +18,12 @@ sudo apt install sqlite3
 sqlite3 data.db
 # Create tables
 create table categories (id string, name string, description string);
+create table courses (id string, name string, description string, category_id string);
+## Optional commands:
 # Query data
 select * from categories;
+# Clear table
+delete from categories;
 ```
 > Important: in order to exit database CLI type `.quit`. Unless you were already typping a command then type `;` to finish it first.
 
@@ -45,6 +49,14 @@ mutation createCategory {
   }
 }
 
+mutation createCourse {
+  createCourse(input:{name: "Full Cycle", description: "The best!", categoryId: "a639f82e-d442-4554-8a07-072ec327b13c"}){
+    id
+    name
+    description
+  }
+}
+
 query queryCategories {
   categories {
     id
@@ -55,6 +67,13 @@ query queryCategories {
       name
       description
     }
+  }
+}
+
+query queryCourses {
+  courses {
+    id
+    name
   }
 }
 ```
