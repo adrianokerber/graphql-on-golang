@@ -4,8 +4,8 @@ schema:
 
 # Where should the generated server code go?
 exec:
-  filename: graph/generated.go
-  package: graph
+  filename: graph/generated/generated.go
+  package: generated
 
 # Uncomment to enable federation
 # federation:
@@ -71,6 +71,12 @@ autobind:
 # modelgen, the others will be allowed when binding to fields. Configure them to
 # your liking
 models:
+  Category:
+    model:
+      - github.com/adrianokerber/graphql-on-golang/graph/model.Category
+  Course:
+    model:
+      - github.com/adrianokerber/graphql-on-golang/graph/model.Course
   ID:
     model:
       - github.com/99designs/gqlgen/graphql.ID
