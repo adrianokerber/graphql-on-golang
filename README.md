@@ -24,6 +24,10 @@ create table courses (id string, name string, description string, category_id st
 select * from categories;
 # Clear table
 delete from categories;
+# List table columns
+pragma table_info(courses);
+# Join tables to search by a course with its category
+select * from courses cou inner join categories cat on cat.id = cou.category_id where cou.id = 'e7e66f27-7b39-4ee0-a5e6-a7e9a97d40ca';
 ```
 > Important: in order to exit database CLI type `.quit`. Unless you were already typping a command then type `;` to finish it first.
 
@@ -62,6 +66,14 @@ query queryCategories {
     id
     name
     description
+  }
+}
+
+query queryCategoriesWithCourses {
+  categories {
+    id
+    name
+    description
     courses {
       id
       name
@@ -74,6 +86,19 @@ query queryCourses {
   courses {
     id
     name
+  }
+}
+
+query queryCoursesWithCategory {
+  courses {
+    id
+    name
+    description
+    category {
+      id
+      name
+      description
+    }
   }
 }
 ```
